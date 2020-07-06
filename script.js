@@ -6,21 +6,16 @@
 
 
 var timer = 75;
+var currentQuestion = 0;
 var questionArray = [
   {
     q: "cd [answer here] changes you to the home directory",
-    a: "..",
-    b: "!",
-    c: "~",
-    d: "It's not possible",
+    possibleAnswers: ["..", "!", "~", "It's not possible"],
     correct: "c"
   },
   {
     q: "What is the tag called attached to an image incase there is no image?",
-    a: "alt tag",
-    b: "just-in-case tag",
-    c: "picture tag",
-    d: "error tag",
+    possibleAnswers: ["alt tag", "just-in-case tag", "picture tag", "error tag"],
     correct: "a"
   }
 ]
@@ -54,6 +49,7 @@ console.log(questionArray)
 //correct: both b and d (trick question?)
 
 
+//button to start quiz and timer
 function easyClick() {
   console.log("whoopee")
   document.getElementById("difficultyButtons").setAttribute("style", "display:none")
@@ -61,16 +57,26 @@ function easyClick() {
   var timeLeft = setInterval(function () {
     timer--;
     document.getElementById("timerSpot").textContent = "Timer: " + timer;
+    //timer hit 0, game over
     if (timer === 0) {
       clearInterval(timeLeft)
     }
-    showQuestions();
+    //loop ask question, give multiple choices
+    showQuestions(currentQuestion)
+    currentQuestion++;
   }, 1000);
 }
-//button to start quiz and timer
-  //watching all the time
-    //timer hit 0, game over
-  //loop ask question, give multiple choices
+
+
+function showQuestions(whichQuestion) {
+  document.getElementById("question").textContent = questionArray[whichQuestion]["q"]
+  document.getElementById("answera").textContent = questionArray[whichQuestion]["a"]
+  document.getElementById("answerb").textContent = questionArray[whichQuestion]["b"]
+  document.getElementById("answerc").textContent = questionArray[whichQuestion]["c"]
+  document.getElementById("answerd").textContent = questionArray[whichQuestion]["d"]
+}
+
+
     //right answer, increase score by one
     //wrong answer, decrease timer by 5? seconds
     //if no questions left
