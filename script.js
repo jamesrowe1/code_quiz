@@ -1,7 +1,7 @@
 //variables up top
   //timer
-  //score
-  //somehow high schore
+  //score - time left
+  //somehow high score
   //array of objects where the objects are questions, the possible solutions are an element, and the answer is another element
 
 //here are questions. Maybe think about randomizing answer order?
