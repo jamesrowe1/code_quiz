@@ -6,7 +6,7 @@
 
 
 var timer = 75;
-var currentQuestion = 0;
+var currentQuestion = -1;
 var answerChose = true;
 var userDecision;
 var gameOver = false;
@@ -52,12 +52,13 @@ var questionArray = [
 
 
 //button to start quiz and timer
-function easyClick() {
+function easyClick(victory) {
   document.getElementById("difficultyButtons").setAttribute("style", "display:none")
   document.getElementById("answers").setAttribute("style", "display: inline")
   var timeLeft = setInterval(function () {
     if (gameOver === true) {
-      clearInterval(timeLeft)
+      clearInterval(timeLeft);
+      victory();
     };
     timer--;
     document.getElementById("timerSpot").textContent = "Timer: " + timer;
@@ -73,13 +74,14 @@ function easyClick() {
 //show the next question
 function showQuestions() {
   if (answerChose === true) {
+    currentQuestion++;
     document.getElementById("question").textContent = questionArray[currentQuestion]["q"]
 
     document.getElementById("answer0").textContent = questionArray[currentQuestion].possibleAnswers[0]
     document.getElementById("answer1").textContent = questionArray[currentQuestion].possibleAnswers[1]
     document.getElementById("answer2").textContent = questionArray[currentQuestion].possibleAnswers[2]
     document.getElementById("answer3").textContent = questionArray[currentQuestion].possibleAnswers[3]
-    currentQuestion++;
+
     answerChose = false;
 
   }
@@ -89,24 +91,27 @@ function showQuestions() {
 function userChose(choice) {
   answerChose = true;
   userDecision = choice;
-  console.log(choice)
   checkAnswer();
 }
 
 //check the answer and subtract 5 seconds if wrong
 function checkAnswer() {
-  console.log(userDecision)
-  console.log(questionArray[currentQuestion])
+
   if (userDecision !== questionArray[currentQuestion].correct) {
     timer = timer - 5;
   }
 
-  if (currentQuestion === questionArray.length) {
+  console.log(currentQuestion)
+  console.log(questionArray.length)
+  if (currentQuestion === questionArray.length - 2) {
     gameOver = true;
   }
 
 }
 
+function victory() {
+  alert("Your score is " + timer)
+}
     //right answer, increase score by one
     //wrong answer, decrease timer by 5? seconds
     //if no questions left
