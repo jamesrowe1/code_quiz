@@ -7,16 +7,17 @@
 
 var timer = 75;
 var currentQuestion = 0;
+var answerChose = false;
 var questionArray = [
   {
     q: "cd [answer here] changes you to the home directory",
     possibleAnswers: ["..", "!", "~", "It's not possible"],
-    correct: "c"
+    correct: 2
   },
   {
     q: "What is the tag called attached to an image incase there is no image?",
     possibleAnswers: ["alt tag", "just-in-case tag", "picture tag", "error tag"],
-    correct: "a"
+    correct: 0
   }
 ]
 console.log(questionArray)
@@ -62,20 +63,27 @@ function easyClick() {
       clearInterval(timeLeft)
     }
     //loop ask question, give multiple choices
-    showQuestions(currentQuestion)
-    currentQuestion++;
+    showQuestions()
   }, 1000);
 }
 
 
-function showQuestions(whichQuestion) {
-  document.getElementById("question").textContent = questionArray[whichQuestion]["q"]
-  document.getElementById("answera").textContent = questionArray[whichQuestion]["a"]
-  document.getElementById("answerb").textContent = questionArray[whichQuestion]["b"]
-  document.getElementById("answerc").textContent = questionArray[whichQuestion]["c"]
-  document.getElementById("answerd").textContent = questionArray[whichQuestion]["d"]
+function showQuestions() {
+  if (answerChose === true) {
+    document.getElementById("question").textContent = questionArray[currentQuestion]["q"]
+
+    document.getElementById("answer0").textContent = questionArray[currentQuestion].possibleAnswers[0]
+    document.getElementById("answer1").textContent = questionArray[currentQuestion].possibleAnswers[1]
+    document.getElementById("answer2").textContent = questionArray[currentQuestion].possibleAnswers[2]
+    document.getElementById("answer3").textContent = questionArray[currentQuestion].possibleAnswers[3]
+    currentQuestion++;
+    answerChose = false;
+  }
 }
 
+function userChose() {
+  answerChose = true;
+}
 
     //right answer, increase score by one
     //wrong answer, decrease timer by 5? seconds
