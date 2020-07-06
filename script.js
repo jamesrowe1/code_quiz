@@ -7,7 +7,9 @@
 
 var timer = 75;
 var currentQuestion = 0;
-var answerChose = false;
+var answerChose = true;
+var userDecision;
+var gameOver = false;
 var questionArray = [
   {
     q: "cd [answer here] changes you to the home directory",
@@ -20,7 +22,6 @@ var questionArray = [
     correct: 0
   }
 ]
-console.log(questionArray)
 
 
 //here are questions. Maybe think about randomizing answer order?
@@ -52,10 +53,12 @@ console.log(questionArray)
 
 //button to start quiz and timer
 function easyClick() {
-  console.log("whoopee")
   document.getElementById("difficultyButtons").setAttribute("style", "display:none")
   document.getElementById("answers").setAttribute("style", "display: inline")
   var timeLeft = setInterval(function () {
+    if (gameOver === true) {
+      clearInterval(timeLeft)
+    };
     timer--;
     document.getElementById("timerSpot").textContent = "Timer: " + timer;
     //timer hit 0, game over
@@ -67,7 +70,7 @@ function easyClick() {
   }, 1000);
 }
 
-
+//show the next question
 function showQuestions() {
   if (answerChose === true) {
     document.getElementById("question").textContent = questionArray[currentQuestion]["q"]
@@ -78,11 +81,30 @@ function showQuestions() {
     document.getElementById("answer3").textContent = questionArray[currentQuestion].possibleAnswers[3]
     currentQuestion++;
     answerChose = false;
+
   }
 }
 
-function userChose() {
+//see the users answer choice
+function userChose(choice) {
   answerChose = true;
+  userDecision = choice;
+  console.log(choice)
+  checkAnswer();
+}
+
+//check the answer and subtract 5 seconds if wrong
+function checkAnswer() {
+  console.log(userDecision)
+  console.log(questionArray[currentQuestion])
+  if (userDecision !== questionArray[currentQuestion].correct) {
+    timer = timer - 5;
+  }
+
+  if (currentQuestion === questionArray.length) {
+    gameOver = true;
+  }
+
 }
 
     //right answer, increase score by one
