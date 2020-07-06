@@ -5,7 +5,7 @@
 //array of objects where the objects are questions, the possible solutions are an element, and the answer is another element
 
 
-var timer;
+var timer = 75;
 var questionArray = [
   {
     q: "cd [answer here] changes you to the home directory",
@@ -56,6 +56,16 @@ console.log(questionArray)
 
 function easyClick() {
   console.log("whoopee")
+  document.getElementById("difficultyButtons").setAttribute("style", "display:none")
+  document.getElementById("answers").setAttribute("style", "display: inline")
+  var timeLeft = setInterval(function () {
+    timer--;
+    document.getElementById("timerSpot").textContent = "Timer: " + timer;
+    if (timer === 0) {
+      clearInterval(timeLeft)
+    }
+    showQuestions();
+  }, 1000);
 }
 //button to start quiz and timer
   //watching all the time

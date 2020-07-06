@@ -5,3 +5,8 @@ body {
 header {
     text-align: center;
 }
+
+#answers {
+    width: 200px;
+    height: 200px;
+}
