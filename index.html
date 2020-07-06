@@ -12,14 +12,42 @@
 </head>
 
 <body>
-    hello world
-    <!-- header announcing code quiz -->
-    <!-- show high scores link somewhere -->
-    <!-- timer that counts down once start button clicked -->
-    <!-- instructions  -->
-    <!-- BONUS: ask for difficulty or seperate by topic -->
-    <!-- pushing button starts quiz -->
+    <header>
+        <!-- header announcing code quiz -->
+        <!-- show high scores link somewhere -->
+        <!-- timer that counts down once start button clicked -->
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">CODE QUIZ</h1>
+                <p class="lead">Are you ready to put your knowledge to the test?</p>
+                <!-- instructions  -->
+                <p>Select a difficulty and find out!</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="text-center">
+        <!-- BONUS: ask for difficulty or seperate by topic -->
+        <!-- pushing button starts quiz -->
+        <div class="btn-group" role="group" aria-label="Basic example" id="difficultyButtons">
+            <button type="button" class="btn btn-secondary" onclick="easyClick()" id="easyBtn">Easy</button>
+            <button type="button" class="btn btn-secondary" id="mediumBtn">Medium</button>
+            <button type="button" class="btn btn-secondary" id="hardButton">Hard</button>
+        </div>
+    </div>
+
+
+
     <!-- replace instructions with first multiple choice questions -->
+    <div class="text-center" style="display:none">
+        <div class="btn-group-vertical" role="group" aria-label="Basic example" id="answers">
+            <button type="button" class="btn btn-secondary" id="answerA"></button>
+            <button type="button" class="btn btn-secondary" id="answerB"></button>
+            <button type="button" class="btn btn-secondary" id="answerC"></button>
+            <button type="button" class="btn btn-secondary" id="answerD"></button>
+        </div>
+    </div>
     <!-- iterate through questions -->
     <!-- at end, show scores and leaderboard -->
 
