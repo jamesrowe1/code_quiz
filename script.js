@@ -5,7 +5,7 @@
 //array of objects where the objects are questions, the possible solutions are an element, and the answer is another element
 
 
-var timer = 75;
+var timer = 10;
 var currentQuestion = -1;
 var answerChose = true;
 var userDecision;
@@ -20,7 +20,7 @@ var questionArray = [
     q: "What is the tag called attached to an image incase there is no image?",
     possibleAnswers: ["alt tag", "just-in-case tag", "picture tag", "error tag"],
     correct: 0
-  }
+  },
 ]
 
 
@@ -52,22 +52,28 @@ var questionArray = [
 
 
 //button to start quiz and timer
-function easyClick(victory) {
+function easyClick() {
   document.getElementById("difficultyButtons").setAttribute("style", "display:none")
   document.getElementById("answers").setAttribute("style", "display: inline")
+  document.getElementById("timerSpot").textContent = "Timer: " + timer;
+  showQuestions()
   var timeLeft = setInterval(function () {
     if (gameOver === true) {
       clearInterval(timeLeft);
       victory();
     };
+
     timer--;
     document.getElementById("timerSpot").textContent = "Timer: " + timer;
     //timer hit 0, game over
     if (timer === 0) {
       clearInterval(timeLeft)
+      gameOver = true;
+      victory();
+    } else if (gameOver === false) {
+      //loop ask question, give multiple choices
+
     }
-    //loop ask question, give multiple choices
-    showQuestions()
   }, 1000);
 }
 
@@ -75,12 +81,12 @@ function easyClick(victory) {
 function showQuestions() {
   if (answerChose === true) {
     currentQuestion++;
-    document.getElementById("question").textContent = questionArray[currentQuestion]["q"]
+    document.getElementById("question").textContent = questionArray[currentQuestion].q;
 
-    document.getElementById("answer0").textContent = questionArray[currentQuestion].possibleAnswers[0]
-    document.getElementById("answer1").textContent = questionArray[currentQuestion].possibleAnswers[1]
-    document.getElementById("answer2").textContent = questionArray[currentQuestion].possibleAnswers[2]
-    document.getElementById("answer3").textContent = questionArray[currentQuestion].possibleAnswers[3]
+    document.getElementById("answer0").textContent = questionArray[currentQuestion].possibleAnswers[0];
+    document.getElementById("answer1").textContent = questionArray[currentQuestion].possibleAnswers[1];
+    document.getElementById("answer2").textContent = questionArray[currentQuestion].possibleAnswers[2];
+    document.getElementById("answer3").textContent = questionArray[currentQuestion].possibleAnswers[3];
 
     answerChose = false;
 
@@ -92,6 +98,9 @@ function userChose(choice) {
   answerChose = true;
   userDecision = choice;
   checkAnswer();
+  if (gameOver === false) {
+    showQuestions();
+  }
 }
 
 //check the answer and subtract 5 seconds if wrong
@@ -103,7 +112,7 @@ function checkAnswer() {
 
   console.log(currentQuestion)
   console.log(questionArray.length)
-  if (currentQuestion === questionArray.length - 2) {
+  if (currentQuestion === questionArray.length - 1) {
     gameOver = true;
   }
 
@@ -112,15 +121,4 @@ function checkAnswer() {
 function victory() {
   alert("Your score is " + timer)
 }
-    //right answer, increase score by one
-    //wrong answer, decrease timer by 5? seconds
-    //if no questions left
-      //end game
-  //loop
-
-//after end game
-  //give user score
-  //ask user for initials
-  //tell user what place they are in
-  //show leaderboard
 
