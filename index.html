@@ -34,8 +34,8 @@
         <!-- pushing button starts quiz -->
         <div class="btn-group" role="group" aria-label="Basic example" id="difficultyButtons">
             <button type="button" class="btn btn-secondary" onclick="easyClick()" id="easyBtn">Easy</button>
-            <button type="button" class="btn btn-secondary" id="mediumBtn">Medium</button>
-            <button type="button" class="btn btn-secondary" id="hardButton">Hard</button>
+            <button type="button" class="btn btn-secondary" onclick="mediumClick()" id="mediumBtn">Medium</button>
+            <button type="button" class="btn btn-secondary" onclick="hardClick()" id="hardButton">Hard</button>
         </div>
     </div>
 
@@ -43,17 +43,38 @@
 
     <!-- replace instructions with first multiple choice questions -->
     <div class="text-center">
-        <p id="question"></p>
-        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="display:none" id="answers">
+        <h4 id="questions"></h4>
+        <br>
+        <div class="btn-group-vertical" role="group" aria-label="answerChoices" style="display:none" id="answers">
             <button type="button" class="btn btn-secondary" onclick="userChose(0)" id="answer0"></button>
             <button type="button" class="btn btn-secondary" onclick="userChose(1)" id="answer1"></button>
             <button type="button" class="btn btn-secondary" onclick="userChose(2)" id="answer2"></button>
             <button type="button" class="btn btn-secondary" onclick="userChose(3)" id="answer3"></button>
         </div>
     </div>
-    <!-- iterate through questions -->
-    <!-- at end, show scores and leaderboard -->
 
+    <!-- at end, show scores and leaderboard -->
+    <!-- Modal -->
+    <div class="modal fade" id="gameOverScreen" tabindex="-1" role="dialog" aria-labelledby="gameOverScreen"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gameOverTitle">Game Over</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Congratulations! Your Score is:
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="closeModal()"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- bootstrap js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -10,3 +10,19 @@ header {
     width: 200px;
     height: 200px;
 }
+
+.btn {
+    margin: 10px;
+}
+
+#answers, #answer0, #answer1, #answer2, #answer3 {
+    width: 50%
+}
+
+#difficultyButtons {
+    display: inline;
+}
+
+#timerSpot {
+    margin-left: 50px;
+}
