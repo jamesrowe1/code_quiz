@@ -133,37 +133,53 @@ function hardClick() {
 
 //updates the timer
 function updateTimer() {
+  if (timer < 0) {
+    timer = 0;
+  }
   timerSpotEl.textContent = "Timer: " + timer;
 }
 
 //button to start quiz and timer
 function startQuiz() {
   //How long the game will last
-  timer = 75;
+  timer = 10;
   //Ensure gameOver= false so the game happens
   gameOver = false;
 
   //hide the difficulty buttons
   difficultyButtonsEl.setAttribute("style", "display:none");
+
   //show the questions
   questionsEl.setAttribute("style", "display: inline");
+
   //show the possible answers
   answersEl.setAttribute("style", "display: inline");
+
   //update the timer spot
   updateTimer();
+
+  //call the showQuestions function
   showQuestions();
+
+  //run the timer interval with 1 second interval
   var timeLeft = setInterval(function () {
+    //if the game is over, stop the timer
     if (gameOver === true) {
       clearInterval(timeLeft);
     } else {
       timer--;
     }
 
+    //update the timer spot
     updateTimer();
-    //timer hit 0, game over
+
+    //timer hit 0, game over. Hits less than 0 (many wrong answers)
     if (timer <= 0) {
       clearInterval(timeLeft);
       gameOver = true;
+      //can't get score lower than 0
+      timer = 0;
+      updateTimer();
       victory();
     } else if (gameOver === false) {
       //loop ask question, give multiple choices
@@ -173,6 +189,7 @@ function startQuiz() {
 
 //show the next question
 function showQuestions() {
+  //check to make sure an answer was selected
   if (answerChose === true) {
     document.getElementById("questions").textContent =
       questionArray[currentQuestion].q;
