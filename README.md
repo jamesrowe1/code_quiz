@@ -5,9 +5,11 @@
 This is the 4th Homework Assignment for the Columbia Coding Bootcamp. It is a Code Quiz. Prepare to be challenged!
 
 ## Project Link
+
 https://jamesrowe1.github.io/code_quiz/
 
 ## Screenshot
+
 ![codequiz](./codequiz.jpg)
 
 ## Getting Started
@@ -16,7 +18,7 @@ Begin by selecting a difficulty. The higher the difficulty, the more questions y
 
 ## Prerequisites
 
-You must have a working web browser. Knowledge of coding and coding terms is suggested.
+You must have a working web browser. Knowledge of coding and coding terms is suggested. Sound is included on both right and wrong answers, as well as background music at approximately 30 seconds remaining, so working speakers are neccessary to hear that.
 
 ## Built With
 
@@ -26,6 +28,7 @@ You must have a working web browser. Knowledge of coding and coding terms is sug
 - JavaScript
 - Chrome
 - Hosted by Github
+- https://www.myinstants.com/ (provided the sound clips)
 
 ## Authors
 
