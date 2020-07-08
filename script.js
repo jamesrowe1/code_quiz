@@ -22,6 +22,12 @@ var userDecision;
 var gameOver;
 var lengthOfQuiz = 0;
 var highScoresArray = [];
+var isAudioPlaying = false;
+
+//audio vars
+var audioSecondsLeft = new Audio("thinking-music.mp3");
+var audioCorrect = new Audio("rightanswer.mp3");
+var audioWrong = new Audio("wrong.mp3");
 
 //array of objects where the objects are questions, the possible solutions are an array, and the answer is another element
 var questionArray = [
@@ -122,10 +128,12 @@ function easyClick() {
   lengthOfQuiz = Math.floor(questionArray.length * 0.34);
   startQuiz();
 }
+
 function mediumClick() {
   lengthOfQuiz = Math.floor(questionArray.length * 0.67);
   startQuiz();
 }
+
 function hardClick() {
   lengthOfQuiz = questionArray.length;
   startQuiz();
@@ -142,7 +150,7 @@ function updateTimer() {
 //button to start quiz and timer
 function startQuiz() {
   //How long the game will last
-  timer = 10;
+  timer = 32;
   //Ensure gameOver= false so the game happens
   gameOver = false;
 
@@ -173,6 +181,11 @@ function startQuiz() {
     //update the timer spot
     updateTimer();
 
+    //lets play some crunch time music
+    if (timer <= 31 && isAudioPlaying === false && gameOver === false) {
+      audioSecondsLeft.play();
+      isAudioPlaying = true;
+    }
     //timer hit 0, game over. Hits less than 0 (many wrong answers)
     if (timer <= 0) {
       clearInterval(timeLeft);
@@ -223,6 +236,9 @@ function checkAnswer() {
   if (userDecision !== questionArray[currentQuestion].correct) {
     timer = timer - 5;
     updateTimer();
+    audioWrong.play();
+  } else {
+    audioCorrect.play();
   }
   //increment currentQuestion
   currentQuestion++;
@@ -239,6 +255,15 @@ function victory() {
   difficultyButtonsEl.setAttribute("style", "display:inline");
   questionsEl.setAttribute("style", "display: none");
   answersEl.setAttribute("style", "display: none");
+
+  //stop music
+  audioCorrect.pause();
+  audioCorrect.currentTime = 0;
+  audioWrong.pause();
+  audioWrong.currentTime = 0;
+  audioSecondsLeft.pause();
+  audioSecondsLeft.currentTime = 0;
+  isAudioPlaying = false;
 
   //reset variables
   gameOver = true;
@@ -299,6 +324,7 @@ function clearHighScores() {
   localStorage.removeItem("highscores");
   highScoresArray = [];
 }
+
 function closeModal() {
   //close the modal
   $("#gameOverScreen").modal("toggle");
