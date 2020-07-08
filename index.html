@@ -26,9 +26,17 @@
             </div>
         </div>
     </header>
+
+    <!-- Button trigger high score modal -->
+    <button type="button" class="btn btn-primary"      data-toggle="modal" data-target="#highScoreModal" onclick="viewHighScores()">
+        High Scores
+    </button>
+
     <div col-md-2>
         <p id="timerSpot">Timer: </p>
     </div>
+
+    <!-- start the quiz based on difficulty choice -->
     <div class="text-center">
         <!-- BONUS: ask for difficulty or seperate by topic -->
         <!-- pushing button starts quiz -->
@@ -53,8 +61,8 @@
         </div>
     </div>
 
-    <!-- at end, show scores and leaderboard -->
-    <!-- Modal -->
+    
+    <!-- Game Over Modal-->
     <div class="modal fade" id="gameOverScreen" tabindex="-1" role="dialog" aria-labelledby="gameOverScreen"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -65,16 +73,41 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    Congratulations! Your Score is:
+                <div class="modal-body" style="text-align: center;">
+                    <h3 id="congrats">Congratulations! Your Score is:</h3>
+                    <input id="initials" cols="3" rows="1" placeholder="ABC" title="Input Initials"></input>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="closeModal()"
                         data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="submitScore()">Submit</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- High Score Modal -->
+    <div class="modal fade" id="highScoreModal" tabindex="-1" role="dialog" aria-labelledby="highScore" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="highScore">High Scores</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body" id="highScoreModalBody">
+            ...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="clearHighScores()">Clear High Scores</button>
+
+        </div>
+        </div>
+        </div>
+  </div>
+
     <!-- bootstrap js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
