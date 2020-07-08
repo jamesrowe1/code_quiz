@@ -108,6 +108,9 @@ function hardClick() {
   startQuiz();
 }
 
+function updateTimer() {
+  timerSpotEl.textContent = "Timer: " + timer;
+}
 //button to start quiz and timer
 function startQuiz() {
   timer = 100;
@@ -115,7 +118,7 @@ function startQuiz() {
   difficultyButtonsEl.setAttribute("style", "display:none")
   questionsEl.setAttribute("style", "display: inline")
   answersEl.setAttribute("style", "display: inline")
-  timerSpotEl.textContent = "Timer: " + timer;
+  updateTimer();
   showQuestions()
   var timeLeft = setInterval(function () {
     if (gameOver === true) {
@@ -124,7 +127,7 @@ function startQuiz() {
       timer--;
     };
 
-    timerSpotEl.textContent = "Timer: " + timer;
+    updateTimer();
     //timer hit 0, game over
     if (timer <= 0) {
       clearInterval(timeLeft)
@@ -140,7 +143,6 @@ function startQuiz() {
 //show the next question
 function showQuestions() {
   if (answerChose === true) {
-    console.log("show questions" + currentQuestion)
     document.getElementById("questions").textContent = questionArray[currentQuestion].q;
 
     document.getElementById("answer0").textContent = questionArray[currentQuestion].possibleAnswers[0];
@@ -168,6 +170,7 @@ function checkAnswer() {
   //if user gets wrong, timer drops 5 seconds
   if (userDecision !== questionArray[currentQuestion].correct) {
     timer = timer - 5;
+    updateTimer();
   }
   //increment currentQuestion
   currentQuestion++;
@@ -189,7 +192,6 @@ function victory() {
   //reset variables
   gameOver = true;
   currentQuestion = 0;
-  console.log("victory" + currentQuestion)
   answerChose = true;
 
   //set the Modal to pop up
