@@ -307,37 +307,41 @@ function viewHighScores() {
   $("#highScoreTable td").remove();
 
   //add rows to the table to show the high score rankings
-  for (var i = 0; i < sortedHighScoreArray.length; i++) {
-    //new row added to hightscoretable
-    var newRow = highScoreTable.insertRow();
-    //there will only be 3 things put in table, rank, initials, and score
-    for (var j = 0; j < 3; j++) {
-      var newCell = newRow.insertCell(j);
-      if (j === 0) {
-        //insert the rank
-        var newText = document.createTextNode(Number(i + 1) + ".");
-      } else if (j === 1) {
-        //insert the initials
-        var newText = document.createTextNode(sortedHighScoreArray[i].initials);
-      } else if (j === 2) {
-        //insert the score
-        var newText = document.createTextNode(sortedHighScoreArray[i].score);
+  if (sortedHighScoreArray !== null) {
+    for (var i = 0; i < sortedHighScoreArray.length; i++) {
+      //new row added to hightscoretable
+      var newRow = highScoreTable.insertRow();
+      //there will only be 3 things put in table, rank, initials, and score
+      for (var j = 0; j < 3; j++) {
+        var newCell = newRow.insertCell(j);
+        if (j === 0) {
+          //insert the rank
+          var newText = document.createTextNode(Number(i + 1) + ".");
+        } else if (j === 1) {
+          //insert the initials
+          var newText = document.createTextNode(
+            sortedHighScoreArray[i].initials
+          );
+        } else if (j === 2) {
+          //insert the score
+          var newText = document.createTextNode(sortedHighScoreArray[i].score);
+        }
+        //here is where the above logic is actually applied
+        newCell.appendChild(newText);
       }
-      //here is where the above logic is actually applied
-      newCell.appendChild(newText);
-    }
-    // var score = document.createElement("P");
-    // score.innerText =
-    //   Number(i + 1) +
-    //   ".       " +
-    //   sortedHighScoreArray[i].initials +
-    //   "            " +
-    //   sortedHighScoreArray[i].score;
-    // var linebreak = document.createElement("br");
-    // highScoreModalBody.append(linebreak);
-    // highScoreModalBody.append(score.textContent);
+      // var score = document.createElement("P");
+      // score.innerText =
+      //   Number(i + 1) +
+      //   ".       " +
+      //   sortedHighScoreArray[i].initials +
+      //   "            " +
+      //   sortedHighScoreArray[i].score;
+      // var linebreak = document.createElement("br");
+      // highScoreModalBody.append(linebreak);
+      // highScoreModalBody.append(score.textContent);
 
-    //put the next score one line below
+      //put the next score one line below
+    }
   }
 }
 
