@@ -285,6 +285,8 @@ function submitScore() {
     initials: initials.value,
     score: timer,
   };
+  //empty the initials box
+  initials.value = "";
   //add the user initials and score to the high score array
   highScoresArray.push(userInitScore);
 
