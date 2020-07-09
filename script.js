@@ -363,3 +363,7 @@ function closeModal() {
   //close the modal
   $("#gameOverScreen").modal("toggle");
 }
+
+function pauseMusic() {
+  audioSecondsLeft.pause();
+}
