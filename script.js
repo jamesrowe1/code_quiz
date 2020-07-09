@@ -80,8 +80,8 @@ var questionArray = [
   //correct: d
   {
     q: "What code do we use to request a true/false answer?",
-    possibleAnswers: ["alert", "confirm", "prompt", "boolean"],
-    correct: 3,
+    possibleAnswers: ["alert", "confirm", "prompt", "string"],
+    correct: 1,
   },
   //6. What can make up an array?
   //a: numbers b: strings c: booleans d: all of the above
