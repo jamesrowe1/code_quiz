@@ -98,7 +98,7 @@ var questionArray = [
     q: "How do we return a random integer between 1 and x?",
     possibleAnswers: [
       "Math.random()",
-      "Math.floor(Math.random*10+1",
+      "Math.floor(Math.random*10)+1",
       "Math.random()*x",
       "Math.floor(Math.random*10)",
     ],
