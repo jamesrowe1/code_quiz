@@ -46,4 +46,12 @@ header {
     padding: 16px;
     margin: 0;
   }
+
+  #answers,
+  #answer0,
+  #answer1,
+  #answer2,
+  #answer3 {
+    width: 80%;
+  }
 }
