@@ -77,7 +77,7 @@ var questionArray = [
   },
   //5. What code do we use to request a true/false answer?
   //a: alert b: confirm c: prompt d: boolean
-  //correct: d
+  //correct: b
   {
     q: "What code do we use to request a true/false answer?",
     possibleAnswers: ["alert", "confirm", "prompt", "string"],
@@ -89,11 +89,11 @@ var questionArray = [
   {
     q: "What can make up an array?",
     possibleAnswers: ["numbers", "strings", "booleans", "all of the above"],
-    correct: 0,
+    correct: 3,
   },
   //7. How do we return a random integer between 1 and x?
   //a: Math.random() b: Math.floor(Math.random*10+1) c: Math.random()*x d: Math.floor(Math.random*10)
-  //correct: d
+  //correct: b
   {
     q: "How do we return a random integer between 1 and x?",
     possibleAnswers: [
@@ -121,7 +121,7 @@ var questionArray = [
   {
     q: "What command puts an element at the top of the page?",
     possibleAnswers: ["append", "prepend", "createElement", "querySelector"],
-    correct: 0,
+    correct: 1,
   },
 ];
 
