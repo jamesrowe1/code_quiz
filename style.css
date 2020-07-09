@@ -37,3 +37,9 @@ header {
 #highScoreModalButton {
   margin-left: 40%;
 }
+
+@media only screen and (max-width: 600px) {
+  .display-4 {
+    font-size: 1.5rem;
+  }
+}
