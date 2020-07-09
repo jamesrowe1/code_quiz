@@ -92,7 +92,7 @@ var questionArray = [
       "Only Numbers",
       "Only Strings",
       "Only Booleans",
-      "all of the above",
+      "All of the above",
     ],
     correct: 3,
   },
