@@ -28,7 +28,6 @@ You must have a working web browser. Knowledge of coding and coding terms is sug
 - JavaScript
 - Chrome
 - Hosted by Github
-- https://www.myinstants.com/ (provided the sound clips)
 
 ## Authors
 
@@ -53,3 +52,4 @@ For any issues contact James Rowe
 - Gabriel Hernandez
 - Tiffany Lombardi
 - Melissa Mercado
+- https://www.myinstants.com/ (provided the sound clips)

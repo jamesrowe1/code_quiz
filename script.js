@@ -13,6 +13,7 @@ var gameOverScreenEl = document.querySelector("#gameOverScreen");
 var gameOverMessageEl = document.querySelector("#congrats");
 var initials = document.querySelector("#initials");
 var highScoreModalBody = document.querySelector("#highScoreModalBody");
+var highScoreTable = document.querySelector("#highScoreTable");
 
 //Initialize Variables
 var timer;
@@ -150,7 +151,7 @@ function updateTimer() {
 //button to start quiz and timer
 function startQuiz() {
   //How long the game will last
-  timer = 32;
+  timer = 60;
   //Ensure gameOver= false so the game happens
   gameOver = false;
 
@@ -300,27 +301,49 @@ function viewHighScores() {
   //get the sorted High Score array from local storage
   var sortedHighScoreArray = JSON.parse(localStorage.getItem("highscores"));
   //clear the modal
-  highScoreModalBody.textContent = "";
+  //highScoreModalBody.textContent = "Rank----Initials----Score";
+
+  //clear the high score table of all the cells but the header
+  $("#highScoreTable td").remove();
+
+  //add rows to the table to show the high score rankings
   for (var i = 0; i < sortedHighScoreArray.length; i++) {
-    var score = document.createElement("P");
-    score.innerText =
-      Number(i + 1) +
-      ". " +
-      sortedHighScoreArray[i].initials +
-      "---" +
-      sortedHighScoreArray[i].score;
-    console.log(score.textContent);
-    highScoreModalBody.append(score.textContent);
+    //new row added to hightscoretable
+    var newRow = highScoreTable.insertRow();
+    //there will only be 3 things put in table, rank, initials, and score
+    for (var j = 0; j < 3; j++) {
+      var newCell = newRow.insertCell(j);
+      if (j === 0) {
+        //insert the rank
+        var newText = document.createTextNode(Number(i + 1) + ".");
+      } else if (j === 1) {
+        //insert the initials
+        var newText = document.createTextNode(sortedHighScoreArray[i].initials);
+      } else if (j === 2) {
+        //insert the score
+        var newText = document.createTextNode(sortedHighScoreArray[i].score);
+      }
+      //here is where the above logic is actually applied
+      newCell.appendChild(newText);
+    }
+    // var score = document.createElement("P");
+    // score.innerText =
+    //   Number(i + 1) +
+    //   ".       " +
+    //   sortedHighScoreArray[i].initials +
+    //   "            " +
+    //   sortedHighScoreArray[i].score;
+    // var linebreak = document.createElement("br");
+    // highScoreModalBody.append(linebreak);
+    // highScoreModalBody.append(score.textContent);
 
     //put the next score one line below
-    var linebreak = document.createElement("br");
-    highScoreModalBody.append(linebreak);
   }
 }
 
 //clear the high scores
 function clearHighScores() {
-  highScoreModalBody.textContent = "";
+  $("#highScoreTable td").remove();
   localStorage.removeItem("highscores");
   highScoresArray = [];
 }

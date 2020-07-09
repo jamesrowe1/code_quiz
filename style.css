@@ -5,7 +5,10 @@ body {
 header {
   text-align: center;
 }
-
+#jumbotron {
+  background-color: red;
+  color: white;
+}
 #answers {
   width: 200px;
   height: 200px;
@@ -28,5 +31,9 @@ header {
 }
 
 #timerSpot {
-  margin-left: 50px;
+  margin-left: 40%;
+}
+
+#highScoreModalButton {
+  margin-left: 40%;
 }

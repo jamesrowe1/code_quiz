@@ -17,7 +17,7 @@
         <!-- show high scores link somewhere -->
         <!-- timer that counts down once start button clicked -->
 
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid" id="jumbotron">
             <div class="container">
                 <h1 class="display-4">CODE QUIZ</h1>
                 <p class="lead">Are you ready to put your knowledge to the test?</p>
@@ -28,7 +28,7 @@
     </header>
 
     <!-- Button trigger high score modal -->
-    <button type="button" class="btn btn-primary"      data-toggle="modal" data-target="#highScoreModal" onclick="viewHighScores()">
+    <button type="button" class="btn btn-primary"      data-toggle="modal" data-target="#highScoreModal" id="highScoreModalButton" onclick="viewHighScores()">
         High Scores
     </button>
 
@@ -97,7 +97,14 @@
             </button>
             </div>
             <div class="modal-body" id="highScoreModalBody">
-            ...
+                <!-- made a table of the high scores cause it looks nice -->
+                <table class="table" id="highScoreTable">
+                    <thead>
+                        <th scope="col">#</th>
+                        <th scope="col">Initials</th>
+                        <th scope="col">Score</th>
+                    </thead>
+                </table>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
