@@ -88,7 +88,12 @@ var questionArray = [
   //correct: d
   {
     q: "What can make up an array?",
-    possibleAnswers: ["numbers", "strings", "booleans", "all of the above"],
+    possibleAnswers: [
+      "Only Numbers",
+      "Only Strings",
+      "Only Booleans",
+      "all of the above",
+    ],
     correct: 3,
   },
   //7. How do we return a random integer between 1 and x?
