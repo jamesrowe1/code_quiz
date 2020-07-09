@@ -54,4 +54,7 @@ header {
   #answer3 {
     width: 80%;
   }
+  #highScoreModalButton {
+    margin-left: 20%;
+  }
 }
