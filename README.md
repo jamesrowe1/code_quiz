@@ -14,7 +14,7 @@ https://jamesrowe1.github.io/code_quiz/
 
 ## Getting Started
 
-Begin by selecting a difficulty. The higher the difficulty, the more questions you must answer in the same amount of time.
+Begin by selecting a difficulty. The higher the difficulty, the more questions you must answer in the same amount of time. If you decide the background music is not for you, press the "Pause Music" button once it starts playing. If you prefer no music, please turn your volume off.
 
 ## Prerequisites
 
